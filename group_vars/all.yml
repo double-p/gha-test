@@ -1,0 +1,12 @@
+---
+zbxv_major: 6
+zbxv_minor: 4
+
+# nginx
+nginx_letsencrypt: false
+nginx_site_name: zbx.rootnexus.net
+nginx_mail_address: pb@rootnexus.net
+
+# debian base
+locales_gen:
+  - en_US.UTF-8

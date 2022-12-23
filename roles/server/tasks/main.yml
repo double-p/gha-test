@@ -1,0 +1,4 @@
+---
+- name: Debug startup
+  ansible.builtin.debug:
+    msg: nothing yet

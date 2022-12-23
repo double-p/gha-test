@@ -1,0 +1,20 @@
+all:
+  hosts:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  children:
+    server:
+      hosts:
+        ssfnkvm126:
+    proxy:
+      hosts:
+        ssfnkvm126:
+    database:
+      hosts:
+        ssfnkvm126:
+    pool:
+      hosts:
+        ssfnkvm126:
+    agent2:
+      hosts:
+        ssfnkvm126:

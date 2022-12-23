@@ -1,0 +1,5 @@
+[gerrit]
+host=review.sysfive.com
+port=29418
+project=tools/zbxinfra-ansible
+defaultbranch=master

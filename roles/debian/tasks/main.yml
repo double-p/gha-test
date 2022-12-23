@@ -1,0 +1,14 @@
+---
+- name: Working on
+  ansible.builtin.debug:
+    msg:
+      "{{ hostvars[inventory_hostname].ansible_distribution }} \
+      {{ hostvars[inventory_hostname].ansible_distribution_major_version }} \
+      -- {{ hostvars[inventory_hostname].ansible_distribution_release }}"
+
+- name: Generate locales
+  community.general.locale_gen:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - '{{ locales_gen }}'
