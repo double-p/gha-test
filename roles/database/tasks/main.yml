@@ -66,6 +66,19 @@
     priv: ALL
   become_user: postgres
 
+- name: Create SQL for tsdb extension
+  ansible.builtin.copy:
+    dest: /var/lib/postgresql/14/main/tsdb-extension.sql
+    content: "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;"
+    owner: postgres
+    mode: 0600
+
+- name: Run tsdb extension script
+  community.postgresql.postgresql_script:
+    db: testit
+    path: /var/lib/postgresql/14/main/tsdb-extension.sql
+  become_user: postgres
+
 - name: Creates a cron file under /etc/cron.d
   ansible.builtin.cron:
     name: psql daily script
