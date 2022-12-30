@@ -10,7 +10,9 @@
 
 - name: Add PostgreSQL repository into sources list
   ansible.builtin.apt_repository:
-    repo: deb http://apt.postgresql.org/pub/repos/apt/ {{ hostvars[inventory_hostname].ansible_distribution_release }}-pgdg main
+    repo: >
+      deb http://apt.postgresql.org/pub/repos/apt/
+      {{ hostvars[inventory_hostname].ansible_distribution_release }}-pgdg main
     state: present
     filename: postgresql
 
@@ -21,7 +23,9 @@
 
 - name: Add TimescaleDB repository into sources list
   ansible.builtin.apt_repository:
-    repo: deb https://packagecloud.io/timescale/timescaledb/debian/ {{ hostvars[inventory_hostname].ansible_distribution_release }} main
+    repo: >
+      deb https://packagecloud.io/timescale/timescaledb/debian/
+      {{ hostvars[inventory_hostname].ansible_distribution_release }} main
     state: present
     filename: timescaledb
 
