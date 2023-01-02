@@ -3,6 +3,24 @@
   ansible.builtin.debug:
     msg: this from webitel
 
+- name: Add packages needed
+  ansible.builtin.package:
+    name:
+      - gpg
+      - ack
+      - jq
+    state: present
+
+# supposedly the former one is faster, let's profile
+- name: Add packages needed
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gpg
+    - ack
+    - jq
+
 - name: Add PostgreSQL apt-key
   ansible.builtin.apt_key:
     url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
