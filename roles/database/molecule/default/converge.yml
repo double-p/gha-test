@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include sysfive.database"
+      include_role:
+        name: "sysfive.database"
