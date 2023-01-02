@@ -1,7 +1,12 @@
 ---
 - name: Converge
-  hosts: all
+  hosts: instance
   tasks:
-    - name: "Include sysfive.database"
-      include_role:
-        name: "sysfive.database"
+    - name: Update apt-cache for good measure
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+- name: Import main playbook
+  import_playbook: ../../../../database.yml
