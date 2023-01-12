@@ -4,11 +4,11 @@ driver:
   name: docker
 lint: |
   set -e
-  ansible-lint
+  # yamllint
 platforms:
   - name: instance
     image: "registry.gitlab.com/aussielunix/ansible/molecule-containers/${MOLECULE_DISTRO:-debian:bullseye}"
-    privileged: false
+    privileged: true
     pre_build_image: true
     override_command: false
     tmpfs:

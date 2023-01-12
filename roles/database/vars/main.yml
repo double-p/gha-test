@@ -1,2 +1,14 @@
 ---
-# vars file for database
+# packages we need system side
+db_pkgs:
+  - gpg
+  - python3-apt
+  - python3-psycopg2
+  - ack
+  - jq
+  - cron
+
+# app specific packages
+pgsql_pkgs:
+  - postgresql-14
+  - timescaledb-2-postgresql-14

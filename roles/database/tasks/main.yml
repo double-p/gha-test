@@ -3,23 +3,10 @@
   ansible.builtin.debug:
     msg: this from webitel
 
-- name: Add packages needed
+- name: Add packages needed (one list)
   ansible.builtin.package:
-    name:
-      - gpg
-      - ack
-      - jq
+    name: "{{ db_pkgs }}"
     state: present
-
-# supposedly the former one is faster, let's profile
-- name: Add packages needed
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - gpg
-    - ack
-    - jq
 
 - name: Add PostgreSQL apt-key
   ansible.builtin.apt_key:
@@ -49,9 +36,7 @@
 
 - name: Update repositories cache and install PostgreSQL 14 and timescaledb packages
   ansible.builtin.apt:
-    pkg:
-      - postgresql-14
-      - timescaledb-2-postgresql-14
+    pkg: "{{ pgsql_pkgs }}"
     update_cache: true
 
 - name: Execute timescaledb-tune
