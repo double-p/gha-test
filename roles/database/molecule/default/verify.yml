@@ -1,10 +1,25 @@
 ---
-# This is an example playbook to execute Ansible tests.
+# put tests inside here, e.g. running process (port check) as
+# functional group testing - not each task, but objectives delivered!
 
 - name: Verify
   hosts: all
   gather_facts: false
+
   tasks:
-  - name: Example assertion
-    ansible.builtin.assert:
-      that: true
+  - name: PostgreSQL enabled
+    ansible.builtin.systemd:
+      name: postgresql
+      enabled: true
+
+  - name: Pgsql cronjob written
+    ansible.builtin.file:
+      path: /etc/cron.d/ansible_psql-database_helper
+      state: file
+
+  - name: Pgsql process running
+    ansible.builtin.command:
+      cmd: pgrep postgres
+    changed_when: false
+    register: pgsql
+    failed_when: pgsql.rc > 0
