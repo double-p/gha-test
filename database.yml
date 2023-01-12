@@ -1,6 +1,6 @@
 ---
 - name: Database
-  hosts: database, instance
+  hosts: database, moleculedb
   become: true
   gather_facts: true
   roles:
