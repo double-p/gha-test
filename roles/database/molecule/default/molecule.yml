@@ -4,7 +4,7 @@ driver:
   name: docker
 lint: |
   set -e
-  # yamllint
+  yamllint .
 platforms:
   - name: moleculedb
     image: "registry.gitlab.com/aussielunix/ansible/molecule-containers/${MOLECULE_DISTRO:-debian:bullseye}"
