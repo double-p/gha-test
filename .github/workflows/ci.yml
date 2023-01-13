@@ -1,5 +1,5 @@
 ---
-name: CI
+name: CI-is-my-name
 'on':
   pull_request:
   push:
